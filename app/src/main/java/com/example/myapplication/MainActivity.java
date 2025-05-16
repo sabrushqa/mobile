@@ -32,22 +32,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Configure Google Sign In
+        // Configuration de Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))  // le token est ici
+                .requestIdToken(getString(R.string.default_web_client_id)) // Défini dans strings.xml
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
 
+        // Si déjà connecté, aller directement à HomeActivity
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+            finish();
+        }
+
         SignInButton signInButton = findViewById(R.id.btnGoogleSignIn);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });
+        signInButton.setOnClickListener(view -> signIn());
     }
 
     private void signIn() {
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 Log.w("GoogleSignIn", "Google sign in failed", e);
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Échec de la connexion Google.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -77,10 +78,14 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(MainActivity.this, "Authentication Successful! Welcome " + user.getEmail(), Toast.LENGTH_LONG).show();
-                        // TODO: Rediriger vers l'écran Home
+                        Toast.makeText(MainActivity.this, "Connexion réussie : " + user.getEmail(), Toast.LENGTH_LONG).show();
+
+                        // Redirection vers l'accueil
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
-                        Toast.makeText(MainActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Échec de l'authentification Firebase.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
