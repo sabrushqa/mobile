@@ -3,7 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -32,23 +32,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Configuration de Google Sign-In
+        // Configuration Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) // Défini dans strings.xml
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
 
-        // Si déjà connecté, aller directement à HomeActivity
+        // Si déjà connecté, aller directement à HomeActivity (client)
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(MainActivity.this, HomeActivity.class));
             finish();
         }
 
         SignInButton signInButton = findViewById(R.id.btnGoogleSignIn);
-        signInButton.setOnClickListener(view -> signIn());
+        Button btnAdminLogin = findViewById(R.id.btnAdminLogin);
+
+        signInButton.setOnClickListener(v -> signIn());
+
+        btnAdminLogin.setOnClickListener(v -> {
+            // Ouvre l'écran de connexion admin
+            Intent intent = new Intent(MainActivity.this, AdminLoginActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void signIn() {
@@ -80,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(MainActivity.this, "Connexion réussie : " + user.getEmail(), Toast.LENGTH_LONG).show();
 
-                        // Redirection vers l'accueil
+                        // Redirection vers l'accueil client
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();

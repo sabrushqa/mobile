@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  android-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ./gradlew assembleDebug
+
+  firebase-emulator:
+    build:
+      context: ./firebase
+    volumes:
+      - ./firebase:/home/firebase
+    ports:
+      - "4000:4000"
+      - "8080:8080"
+      - "9099:9099"
+    working_dir: /home/firebase
+    command: firebase emulators:start

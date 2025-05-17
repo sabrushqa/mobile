@@ -1,0 +1,10 @@
+{
+  "name": "firebase-emulator",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "firebase emulators:start"
+  },
+  "dependencies": {
+    "firebase-tools": "^13.0.0"
+  }
+}

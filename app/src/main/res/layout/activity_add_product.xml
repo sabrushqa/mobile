@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Nom -->
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom du parfum"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+        <!-- Description -->
+        <EditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:padding="10dp"
+            android:gravity="top" />
+
+        <!-- Marque -->
+        <EditText
+            android:id="@+id/edtBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Marque"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <!-- Quantité -->
+        <EditText
+            android:id="@+id/edtQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantité"
+            android:inputType="number"
+            android:padding="10dp" />
+
+        <!-- Prix -->
+        <EditText
+            android:id="@+id/edtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prix"
+            android:inputType="numberDecimal"
+            android:padding="10dp" />
+
+        <!-- Taille de la bouteille -->
+        <Spinner
+            android:id="@+id/spinnerBottleSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- Catégorie -->
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- Sélection images -->
+        <Button
+            android:id="@+id/btnSelectImage1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sélectionner Image 1"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnSelectImage2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sélectionner Image 2"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnSelectImage3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sélectionner Image 3"
+            android:layout_marginTop="8dp" />
+
+        <!-- Bouton Upload -->
+        <Button
+            android:id="@+id/btnUploadProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Créer le produit"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/cardview_light_background"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</ScrollView>
