@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,7 +18,7 @@ public class AdminLoginActivity extends AppCompatActivity {
     private EditText edtEmail, edtPassword;
     private Button btnLogin;
 
-    // Remplace ces identifiants par les bons
+    // ⚠️ Remplace ceci par l’email de ton admin
     private static final String ADMIN_EMAIL = "admin@gmail.com";
 
     @Override
@@ -30,21 +32,39 @@ public class AdminLoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtAdminPassword);
         btnLogin = findViewById(R.id.btnAdminLogin);
 
-        btnLogin.setOnClickListener(view -> {
-            String email = edtEmail.getText().toString().trim();
-            String password = edtPassword.getText().toString().trim();
+        btnLogin.setOnClickListener(view -> loginAdmin());
+    }
 
+    private void loginAdmin() {
+        String email = edtEmail.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
 
+        // ✅ Vérification des champs
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(this, AdminHomeActivity.class));
-                            finish();
-                        } else {
-                            Toast.makeText(this, "Échec de connexion", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        });
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Adresse email invalide", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // ✅ Vérifie si c’est bien l'email admin
+        if (!email.equalsIgnoreCase(ADMIN_EMAIL)) {
+            Toast.makeText(this, "Accès refusé : email non autorisé", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // ✅ Connexion Firebase
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(this, AdminHomeActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Échec de connexion : vérifiez vos identifiants", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

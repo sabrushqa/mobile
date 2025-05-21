@@ -1,0 +1,15 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF"> <!-- Couleur blanche transparente pour effet de clic -->
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="#40FFFFFF" /> <!-- Masque pour effet ripple -->
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#7B4AE2" /> <!-- Couleur de fond du bouton -->
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+</ripple>

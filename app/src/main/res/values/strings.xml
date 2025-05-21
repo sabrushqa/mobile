@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="default_web_client_id">135520415394-o4bi6f0l4r7vuklkjgmqnpm6iq4oulrm.apps.googleusercontent.com</string>
+    <string name="product_image">Image du produit</string>
+    <string name="remove_item">Supprimer larticle</string>
 
 </resources>

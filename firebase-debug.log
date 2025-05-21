@@ -1,0 +1,314 @@
+[debug] [2025-05-19T22:32:37.411Z] ----------------------------------------------------------------------
+[debug] [2025-05-19T22:32:37.419Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2025-05-19T22:32:37.421Z] CLI Version:   14.4.0
+[debug] [2025-05-19T22:32:37.421Z] Platform:      win32
+[debug] [2025-05-19T22:32:37.421Z] Node Version:  v22.14.0
+[debug] [2025-05-19T22:32:37.422Z] Time:          Mon May 19 2025 23:32:37 GMT+0100 (UTC+01:00)
+[debug] [2025-05-19T22:32:37.422Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-19T22:32:38.085Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-19T22:32:38.087Z] > authorizing via signed-in user (sabrenalakehal12@gmail.com)
+[debug] [2025-05-19T22:32:38.087Z] [iam] checking project my-application-aa0ea for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-19T22:32:38.090Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:38.090Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:38.093Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions [none]
+[debug] [2025-05-19T22:32:38.093Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:38.093Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-19T22:32:39.023Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions 200
+[debug] [2025-05-19T22:32:39.024Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-19T22:32:39.025Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:39.025Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:39.025Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-19T22:32:39.025Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-19T22:32:39.803Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-05-19T22:32:39.804Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'my-application-aa0ea'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] +  functions: Finished running predeploy script. 
+[debug] [2025-05-19T22:32:41.557Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:41.557Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:41.558Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-05-19T22:32:41.558Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:42.566Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com 200
+[debug] [2025-05-19T22:32:42.567Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-05-19T22:32:42.567Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.568Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.568Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea [none]
+[debug] [2025-05-19T22:32:42.863Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea 200
+[debug] [2025-05-19T22:32:42.864Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea {"projectNumber":"135520415394","projectId":"my-application-aa0ea","lifecycleState":"ACTIVE","name":"My Application","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-05-16T00:40:10.587117Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-05-19T22:32:42.869Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.869Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.870Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.870Z] Checked if tokens are valid: true, expires at: 1747696858386
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-05-19T22:32:42.872Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.872Z] Checked if tokens are valid: true, expires at: 1747696858386
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-05-19T22:32:42.874Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.874Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:42.875Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-19T22:32:42.875Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:42.877Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-19T22:32:42.878Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:42.886Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudbuild.googleapis.com [none]
+[debug] [2025-05-19T22:32:42.886Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudbuild.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:42.893Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/artifactregistry.googleapis.com [none]
+[debug] [2025-05-19T22:32:42.893Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/artifactregistry.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:43.802Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-19T22:32:43.802Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-05-19T22:32:43.804Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-19T22:32:43.804Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-19T22:32:43.807Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudbuild.googleapis.com 200
+[debug] [2025-05-19T22:32:43.807Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-05-19T22:32:43.810Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/artifactregistry.googleapis.com 200
+[debug] [2025-05-19T22:32:43.811Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-05-19T22:32:43.811Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:43.812Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:43.812Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/my-application-aa0ea/adminSdkConfig [none]
+[debug] [2025-05-19T22:32:44.407Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/my-application-aa0ea/adminSdkConfig 200
+[debug] [2025-05-19T22:32:44.407Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/my-application-aa0ea/adminSdkConfig {"projectId":"my-application-aa0ea","storageBucket":"my-application-aa0ea.firebasestorage.app"}
+[debug] [2025-05-19T22:32:44.409Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:44.410Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:44.410Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs [none]
+[debug] [2025-05-19T22:32:44.811Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs 200
+[debug] [2025-05-19T22:32:44.812Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs {"configs":[{"name":"projects/my-application-aa0ea/configs/sendgrid"}]}
+[debug] [2025-05-19T22:32:44.813Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:44.813Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:44.814Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs/sendgrid/variables [none]
+[debug] [2025-05-19T22:32:45.038Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs/sendgrid/variables 200
+[debug] [2025-05-19T22:32:45.038Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs/sendgrid/variables {"variables":[{"name":"projects/my-application-aa0ea/configs/sendgrid/variables/key","updateTime":"2025-05-19T22:32:21.166547305Z"}]}
+[debug] [2025-05-19T22:32:45.039Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:45.040Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:45.040Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs/sendgrid/variables/key [none]
+[debug] [2025-05-19T22:32:45.318Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs/sendgrid/variables/key 200
+[debug] [2025-05-19T22:32:45.318Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/my-application-aa0ea/configs/sendgrid/variables/key {"name":"projects/my-application-aa0ea/configs/sendgrid/variables/key","updateTime":"2025-05-19T22:32:21.166547305Z","text":"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"}
+[debug] [2025-05-19T22:32:45.323Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2025-05-19T22:32:47.317Z] > [functions] package.json contents: {
+  "name": "functions",
+  "type": "module",
+  "scripts": {
+    "serve": "firebase functions:shell",
+    "start": "firebase emulators:start",
+    "deploy": "firebase deploy --only functions",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.5",
+    "firebase-admin": "^11.11.1",
+    "firebase-functions": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}
+[debug] [2025-05-19T22:32:47.318Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-05-19T22:32:47.321Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-05-19T22:32:47.382Z] Found firebase-functions binary at 'C:\Users\hp\AndroidStudioProjects\MyApplication3\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8647
+
+[debug] [2025-05-19T22:32:48.495Z] Got response from /__/functions.yaml {"endpoints":{"sendOrderStatusEmail":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.update","eventFilters":{"resource":"projects/my-application-aa0ea/databases/(default)/documents/orders/{orderId}"},"retry":false},"labels":{},"entryPoint":"sendOrderStatusEmail"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2025-05-19T22:32:52.553Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:52.553Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:52.553Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/firebaseextensions.googleapis.com [none]
+[debug] [2025-05-19T22:32:52.554Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/firebaseextensions.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:53.513Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/firebaseextensions.googleapis.com 200
+[debug] [2025-05-19T22:32:53.513Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/firebaseextensions.googleapis.com [omitted]
+[info] +  extensions: required API firebaseextensions.googleapis.com is enabled 
+[debug] [2025-05-19T22:32:53.515Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-19T22:32:53.516Z] > authorizing via signed-in user (sabrenalakehal12@gmail.com)
+[debug] [2025-05-19T22:32:53.517Z] [iam] checking project my-application-aa0ea for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2025-05-19T22:32:53.517Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:53.518Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:53.518Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions [none]
+[debug] [2025-05-19T22:32:53.518Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:53.519Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-05-19T22:32:54.329Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions 200
+[debug] [2025-05-19T22:32:54.329Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-05-19T22:32:54.331Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:54.331Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:54.331Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/my-application-aa0ea/instances pageSize=100&pageToken=
+[debug] [2025-05-19T22:32:55.247Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/my-application-aa0ea/instances 200
+[debug] [2025-05-19T22:32:55.248Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/my-application-aa0ea/instances {}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\hp\AndroidStudioProjects\MyApplication3\functions (48.6 KB) for uploading 
+[debug] [2025-05-19T22:32:55.397Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:55.397Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:55.397Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/-/functions [none]
+[debug] [2025-05-19T22:32:56.174Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/-/functions 200
+[debug] [2025-05-19T22:32:56.175Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/-/functions {}
+[debug] [2025-05-19T22:32:56.176Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:56.176Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:56.177Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/my-application-aa0ea/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-05-19T22:32:57.195Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/my-application-aa0ea/locations/-/functions 200
+[debug] [2025-05-19T22:32:57.196Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/my-application-aa0ea/locations/-/functions {}
+[debug] [2025-05-19T22:32:57.204Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:57.204Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:57.204Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-05-19T22:32:57.204Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:32:58.128Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com 200
+[debug] [2025-05-19T22:32:58.128Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/my-application-aa0ea/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-05-19T22:32:58.128Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:58.129Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:58.129Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea [none]
+[debug] [2025-05-19T22:32:58.323Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea 200
+[debug] [2025-05-19T22:32:58.323Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea {"projectNumber":"135520415394","projectId":"my-application-aa0ea","lifecycleState":"ACTIVE","name":"My Application","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-05-16T00:40:10.587117Z"}
+[debug] [2025-05-19T22:32:58.326Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:58.327Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:58.327Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/my-application-aa0ea/billingInfo [none]
+[debug] [2025-05-19T22:32:59.144Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/my-application-aa0ea/billingInfo 200
+[debug] [2025-05-19T22:32:59.145Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/my-application-aa0ea/billingInfo {"name":"projects/my-application-aa0ea/billingInfo","projectId":"my-application-aa0ea","billingAccountName":"billingAccounts/019195-E0C1C7-F77A3C","billingEnabled":true}
+[debug] [2025-05-19T22:32:59.149Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:59.150Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:32:59.150Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2025-05-19T22:32:59.151Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2025-05-19T22:32:59.866Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2025-05-19T22:32:59.867Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-301664316327.us-central1.cloudfunctions.appspot.com/191959c0-ffdf-4f49-8a03-3c667ccfb77a.zip?GoogleAccessId=service-135520415394@gcf-admin-robot.iam.gserviceaccount.com&Expires=1747695779&Signature=LdyJ2DiDwhmAzzEOYFLNxyuTQtyIm%2FcitVNFQnGR3fR%2FZmCP%2F1mY2JRmzbUQWZjwXSSnCrCOsg8%2BnOrjLO2EaJj2PU%2FYzMLZqY4YZ%2BDHfQnCwKhKZseiCmeYZyZxe4Mgv2lQNCH8k%2Bafm%2Be8FQbJrfiZn8YOVMvEZqA00KuyRMKNhiXRFrX7to5Jx2Fh%2B8JXdpkgCc88xig6MLaW%2BQ65783VqztYfnMqmbCxqoIT507u9M%2BM95za7Y5UV%2Bb1cvsW%2FsOqFWKWAk3cYSiufDcA2j8P6b1jJrib2N3OsJGbUlULd38DxNXop0eqL2z0Kx97qF5mUh21nl%2BN6kmWmn%2BJSA%3D%3D"}
+[debug] [2025-05-19T22:32:59.870Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-301664316327.us-central1.cloudfunctions.appspot.com/191959c0-ffdf-4f49-8a03-3c667ccfb77a.zip GoogleAccessId=service-135520415394%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1747695779&Signature=LdyJ2DiDwhmAzzEOYFLNxyuTQtyIm%2FcitVNFQnGR3fR%2FZmCP%2F1mY2JRmzbUQWZjwXSSnCrCOsg8%2BnOrjLO2EaJj2PU%2FYzMLZqY4YZ%2BDHfQnCwKhKZseiCmeYZyZxe4Mgv2lQNCH8k%2Bafm%2Be8FQbJrfiZn8YOVMvEZqA00KuyRMKNhiXRFrX7to5Jx2Fh%2B8JXdpkgCc88xig6MLaW%2BQ65783VqztYfnMqmbCxqoIT507u9M%2BM95za7Y5UV%2Bb1cvsW%2FsOqFWKWAk3cYSiufDcA2j8P6b1jJrib2N3OsJGbUlULd38DxNXop0eqL2z0Kx97qF5mUh21nl%2BN6kmWmn%2BJSA%3D%3D
+[debug] [2025-05-19T22:32:59.870Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-301664316327.us-central1.cloudfunctions.appspot.com/191959c0-ffdf-4f49-8a03-3c667ccfb77a.zip [stream]
+[debug] [2025-05-19T22:33:00.366Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-301664316327.us-central1.cloudfunctions.appspot.com/191959c0-ffdf-4f49-8a03-3c667ccfb77a.zip 200
+[debug] [2025-05-19T22:33:00.367Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-301664316327.us-central1.cloudfunctions.appspot.com/191959c0-ffdf-4f49-8a03-3c667ccfb77a.zip [omitted]
+[info] +  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 22 (1st Gen) function sendOrderStatusEmail(us-central1)... 
+[debug] [2025-05-19T22:33:00.383Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:33:00.383Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:33:00.384Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions [none]
+[debug] [2025-05-19T22:33:00.384Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions {"name":"projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail","sourceUploadUrl":"https://storage.googleapis.com/uploads-301664316327.us-central1.cloudfunctions.appspot.com/191959c0-ffdf-4f49-8a03-3c667ccfb77a.zip?GoogleAccessId=service-135520415394@gcf-admin-robot.iam.gserviceaccount.com&Expires=1747695779&Signature=LdyJ2DiDwhmAzzEOYFLNxyuTQtyIm%2FcitVNFQnGR3fR%2FZmCP%2F1mY2JRmzbUQWZjwXSSnCrCOsg8%2BnOrjLO2EaJj2PU%2FYzMLZqY4YZ%2BDHfQnCwKhKZseiCmeYZyZxe4Mgv2lQNCH8k%2Bafm%2Be8FQbJrfiZn8YOVMvEZqA00KuyRMKNhiXRFrX7to5Jx2Fh%2B8JXdpkgCc88xig6MLaW%2BQ65783VqztYfnMqmbCxqoIT507u9M%2BM95za7Y5UV%2Bb1cvsW%2FsOqFWKWAk3cYSiufDcA2j8P6b1jJrib2N3OsJGbUlULd38DxNXop0eqL2z0Kx97qF5mUh21nl%2BN6kmWmn%2BJSA%3D%3D","entryPoint":"sendOrderStatusEmail","runtime":"nodejs22","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"241c6f4af9bbd24c1d9b62379a95bb4faf943bd0"},"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.update","resource":"projects/my-application-aa0ea/databases/(default)/documents/orders/{orderId}"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"my-application-aa0ea\",\"storageBucket\":\"my-application-aa0ea.firebasestorage.app\"}","GCLOUD_PROJECT":"my-application-aa0ea","EVENTARC_CLOUD_EVENT_SOURCE":"projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null,"buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}}
+[debug] [2025-05-19T22:33:00.782Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions 400
+[debug] [2025-05-19T22:33:00.783Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions {"error":{"code":400,"message":"Failed to create 1st Gen function projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail: runtime: Runtime validation errors: [error_code: INVALID_RUNTIME\nmessage: \"Runtime \\\"nodejs22\\\" is not supported on GCF Gen1\"\n]","status":"INVALID_ARGUMENT"}}
+[warn] !  functions: failed to create function projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail 
+[error] Failed to create function projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail
+[debug] [2025-05-19T22:33:00.811Z] Total Function Deployment time: 413
+[debug] [2025-05-19T22:33:00.811Z] 1 Functions Deployed
+[debug] [2025-05-19T22:33:00.812Z] 1 Functions Errored
+[debug] [2025-05-19T22:33:00.812Z] 0 Function Deployments Aborted
+[debug] [2025-05-19T22:33:00.812Z] Average Function Deployment time: 410
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendOrderStatusEmail(us-central1)
+[debug] [2025-05-19T22:33:01.018Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:33:01.019Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:33:01.019Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/repositories/gcf-artifacts [none]
+[debug] [2025-05-19T22:33:01.997Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/repositories/gcf-artifacts 404
+[debug] [2025-05-19T22:33:01.997Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/repositories/gcf-artifacts {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[debug] [2025-05-19T22:33:01.998Z] Failed to check artifact cleanup policy for region us-central1: Request to https://artifactregistry.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/repositories/gcf-artifacts had HTTP Error: 404, Requested entity was not found. {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://artifactregistry.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/repositories/gcf-artifacts had HTTP Error: 404, Requested entity was not found.","status":404}
+[debug] [2025-05-19T22:33:01.999Z] Functions deploy failed.
+[debug] [2025-05-19T22:33:01.999Z] {
+  "endpoint": {
+    "id": "sendOrderStatusEmail",
+    "project": "my-application-aa0ea",
+    "region": "us-central1",
+    "entryPoint": "sendOrderStatusEmail",
+    "platform": "gcfv1",
+    "runtime": "nodejs22",
+    "eventTrigger": {
+      "eventType": "providers/cloud.firestore/eventTypes/document.update",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/my-application-aa0ea/databases/(default)/documents/orders/{orderId}"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"my-application-aa0ea\",\"storageBucket\":\"my-application-aa0ea.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "my-application-aa0ea",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "241c6f4af9bbd24c1d9b62379a95bb4faf943bd0"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Failed to create 1st Gen function projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail: runtime: Runtime validation errors: [error_code: INVALID_RUNTIME\nmessage: \"Runtime \\\"nodejs22\\\" is not supported on GCF Gen1\"\n]",
+            "status": "INVALID_ARGUMENT"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "Request to https://cloudfunctions.googleapis.com/v1/projects/my-application-aa0ea/locations/us-central1/functions had HTTP Error: 400, Failed to create 1st Gen function projects/my-application-aa0ea/locations/us-central1/functions/sendOrderStatusEmail: runtime: Runtime validation errors: [error_code: INVALID_RUNTIME\nmessage: \"Runtime \\\"nodejs22\\\" is not supported on GCF Gen1\"\n]",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2025-05-19T22:33:02.080Z] Error: Failed to create function sendOrderStatusEmail in region us-central1
+    at C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:52:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Fabricator.createV1Function (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:182:32)
+    at async Fabricator.createEndpoint (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:134:13)
+    at async handle (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:89:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2025-05-19T22:35:16.652Z] ----------------------------------------------------------------------
+[debug] [2025-05-19T22:35:16.660Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --debug
+[debug] [2025-05-19T22:35:16.662Z] CLI Version:   14.4.0
+[debug] [2025-05-19T22:35:16.662Z] Platform:      win32
+[debug] [2025-05-19T22:35:16.662Z] Node Version:  v22.14.0
+[debug] [2025-05-19T22:35:16.664Z] Time:          Mon May 19 2025 23:35:16 GMT+0100 (UTC+01:00)
+[debug] [2025-05-19T22:35:16.664Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-19T22:35:17.300Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-19T22:35:17.303Z] > authorizing via signed-in user (sabrenalakehal12@gmail.com)
+[debug] [2025-05-19T22:35:17.304Z] [iam] checking project my-application-aa0ea for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-05-19T22:35:17.310Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:35:17.310Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:35:17.314Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions [none]
+[debug] [2025-05-19T22:35:17.315Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions x-goog-quota-user=projects/my-application-aa0ea
+[debug] [2025-05-19T22:35:17.315Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-19T22:35:17.890Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions 200
+[debug] [2025-05-19T22:35:17.891Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/my-application-aa0ea:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-05-19T22:35:17.893Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:35:17.894Z] Checked if tokens are valid: true, expires at: 1747696858386
+[debug] [2025-05-19T22:35:17.895Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-05-19T22:35:17.896Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-05-19T22:35:18.712Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-05-19T22:35:18.713Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/my-application-aa0ea/serviceAccounts/my-application-aa0ea@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'my-application-aa0ea'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[error] 
+[error] Error: functions predeploy error: Command terminated with non-zero exit code 1

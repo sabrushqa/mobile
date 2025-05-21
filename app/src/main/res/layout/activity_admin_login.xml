@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FDEBEB"> <!-- Rose très clair -->
 
-    <EditText
-        android:id="@+id/edtAdminEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Email admin"
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="32dp"/>
+        android:layout_marginTop="60dp" />
 
+    <!-- Email -->
+    <EditText
+        android:id="@+id/edtAdminEmail"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="32dp"
+        android:hint="Email admin"
+        android:background="@drawable/edit_text_bg"
+        android:padding="16dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Mot de passe -->
     <EditText
         android:id="@+id/edtAdminPassword"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="32dp"
         android:hint="Mot de passe"
         android:inputType="textPassword"
+        android:background="@drawable/edit_text_bg"
+        android:padding="16dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
         app:layout_constraintTop_toBottomOf="@id/edtAdminEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="32dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Bouton Connexion -->
     <Button
         android:id="@+id/btnAdminLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="32dp"
         android:text="Connexion"
+        android:textColor="#fff"
+        android:background="@drawable/button_bg"
         app:layout_constraintTop_toBottomOf="@id/edtAdminPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

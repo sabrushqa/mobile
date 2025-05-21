@@ -3,7 +3,10 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -49,6 +52,24 @@ public class MainActivity extends AppCompatActivity {
 
         SignInButton signInButton = findViewById(R.id.btnGoogleSignIn);
         Button btnAdminLogin = findViewById(R.id.btnAdminLogin);
+
+        ImageView logo = findViewById(R.id.imageViewLogo);
+        TextView welcomeText = findViewById(R.id.textViewConnect);  // changé pour textViewConnect
+        TextView googleMessage = findViewById(R.id.textViewGoogleMessage);
+
+        // Animation logo (zoom)
+        logo.setScaleX(0f);
+        logo.setScaleY(0f);
+        logo.animate().scaleX(1f).scaleY(1f).setDuration(1000).start();
+
+        // Animation texte bienvenue (fade-in)
+        welcomeText.setAlpha(0f);
+        welcomeText.animate().alpha(1f).setDuration(1500).start();
+
+        // Animation message Google (fade-in différé)
+        googleMessage.setAlpha(0f);
+        googleMessage.setVisibility(View.VISIBLE);
+        googleMessage.animate().alpha(1f).setStartDelay(1600).setDuration(1500).start();
 
         signInButton.setOnClickListener(v -> signIn());
 

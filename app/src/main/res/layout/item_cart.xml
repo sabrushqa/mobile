@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+    <!-- Container horizontal pour les 3 images -->
+    <LinearLayout
+        android:id="@+id/imageContainer"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:contentDescription="Image 1" />
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:contentDescription="Image 2" />
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:contentDescription="Image 3" />
+    </LinearLayout>
+
+    <!-- Nom produit -->
+    <TextView
+        android:id="@+id/tvName"
+        android:text="Produit"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageContainer"
+        app:layout_constraintEnd_toStartOf="@id/tvPrice"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="8dp"/>
+
+    <!-- Prix -->
+    <TextView
+        android:id="@+id/tvPrice"
+        android:text="12.00 DH"
+        android:textSize="14sp"
+        android:textColor="#FF5722"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageContainer" />
+
+    <!-- Quantité + boutons + supprimer -->
+
+    <!-- Quantité -->
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:text="1"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minWidth="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+    <!-- Bouton - -->
+    <Button
+        android:id="@+id/btnRemove"
+        android:text="-"
+        android:textSize="18sp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@id/tvQuantity"
+        app:layout_constraintTop_toTopOf="@id/tvQuantity" />
+
+    <!-- Bouton + -->
+    <Button
+        android:id="@+id/btnAdd"
+        android:text="+"
+        android:textSize="18sp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/btnRemove"
+        app:layout_constraintTop_toTopOf="@id/btnRemove" />
+
+    <!-- Bouton Supprimer -->
+    <Button
+        android:id="@+id/btnDelete"
+        android:text="Supprimer"
+        android:textColor="#D32F2F"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

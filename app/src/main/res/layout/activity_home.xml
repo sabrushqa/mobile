@@ -1,30 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnSignOut"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="100dp"/>
+        android:text="Bienvenue"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"
+        android:textSize="18sp"/>
 
+    <!-- Filtres -->
+    <LinearLayout
+        android:id="@+id/filterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"
+        android:weightSum="4">
+
+
+
+
+
+
+    </LinearLayout>
+
+    <!-- Liste des produits -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
+
+
+
+    <Button
+        android:id="@+id/btnViewCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voir mon panier" />
+
+
+
+
+    <!-- Bouton déconnexion -->
     <Button
         android:id="@+id/btnSignOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Se déconnecter"
-        app:layout_constraintTop_toBottomOf="@id/txtEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        android:text="Déconnexion"
+        android:textSize="14sp"
+        android:padding="8dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

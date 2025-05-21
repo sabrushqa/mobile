@@ -1,34 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal"
-    android:background="#FFFFFF">
+    android:background="#FAFAFA"
+    android:padding="16dp">
 
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- App name -->
     <TextView
-        android:id="@+id/txtWelcomeAdmin"
+        android:id="@+id/txtAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenue Admin"
-        android:textSize="20sp"
+        android:text="sh-perfumes"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
+        android:textColor="#333333"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
 
-    <Button
-        android:id="@+id/btnAddProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ajouter un produit"
-        android:layout_marginBottom="16dp" />
+    <!-- ScrollView pour tout le contenu -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/txtAppName"
+        app:layout_constraintBottom_toTopOf="@id/btnLogoutAdmin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Bienvenue -->
+            <TextView
+                android:id="@+id/txtWelcomeAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👋 Bienvenue Admin"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:paddingBottom="20dp"/>
+
+            <!-- Statistiques commandes + produits stock faible -->
+            <TextView
+                android:id="@+id/txtOrderStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chargement des statistiques..."
+                android:textSize="18sp"
+                android:textColor="#444444" />
+
+            <!-- Boutons -->
+            <Button
+                android:id="@+id/btnAddProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="➕ Ajouter un produit"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="30dp"
+                android:padding="12dp"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btnViewProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📦 Voir produits"
+                android:backgroundTint="#2196F3"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btnViewOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🛒 Voir commandes"
+                android:backgroundTint="#FF9800"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bouton déconnexion en bas -->
     <Button
         android:id="@+id/btnLogoutAdmin"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#FF4444"
-        android:text="Déconnexion"
-        android:textColor="#212121" />
+        android:text="🚪 Déconnexion"
+        android:backgroundTint="#F44336"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

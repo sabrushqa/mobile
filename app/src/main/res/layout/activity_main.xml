@@ -1,22 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btnGoogleSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp" />
+    android:background="@drawable/background_gradient"
+    android:padding="24dp">
 
     <Button
         android:id="@+id/btnAdminLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connexion Admin" />
+        android:text="Admin"
+        android:textColor="#6200EE"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:textAllCaps="false"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-</LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLogo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo"
+            android:contentDescription="Logo de l'application"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textViewAppName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/cardLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewCitation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="&quot;Le parfum est la musique de la mémoire&quot; 🎶🌸"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/textViewAppName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Texte d'invitation à la connexion Google -->
+    <TextView
+        android:id="@+id/textViewConnect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Connectez-vous avec Google pour découvrir nos meilleurs parfums 💐✨"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/textViewCitation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewConnect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/textViewGoogleMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connectez-vous avec Google"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogleSignIn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

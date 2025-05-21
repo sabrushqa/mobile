@@ -1,9 +1,10 @@
 package com.example.myapplication;
 
-import android.app.ProgressDialog;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,160 +14,170 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AddProductActivity extends AppCompatActivity {
 
-    private EditText edtName, edtDescription, edtBrand, edtQuantity, edtPrice;
-    private Spinner spinnerBottleSize, spinnerCategory;
-    private Button btnSelectImage1, btnSelectImage2, btnSelectImage3, btnUploadProduct;
+    private static final int PICK_IMAGE1 = 1;
+    private static final int PICK_IMAGE2 = 2;
+    private static final int PICK_IMAGE3 = 3;
 
     private Uri imageUri1, imageUri2, imageUri3;
-    private static final int IMAGE_PICK_1 = 1;
-    private static final int IMAGE_PICK_2 = 2;
-    private static final int IMAGE_PICK_3 = 3;
 
-    private FirebaseFirestore db;
-    private FirebaseStorage storage;
+    private ImageView imageView1, imageView2, imageView3;
+    private Button btnChooseImage1, btnChooseImage2, btnChooseImage3, btnAddProduct;
 
+    private EditText etName, etDescription, etPrice, etBrand, etBottleSize, etQuantity, etCategory;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        db = FirebaseFirestore.getInstance();
-        storage = FirebaseStorage.getInstance();
+        etName = findViewById(R.id.etName);
+        etDescription = findViewById(R.id.etDescription);
+        etPrice = findViewById(R.id.etPrice);
+        etBrand = findViewById(R.id.etBrand);
+        etBottleSize = findViewById(R.id.etBottleSize);
+        etQuantity = findViewById(R.id.etQuantity);
+        etCategory = findViewById(R.id.etCategory);
 
-        edtName = findViewById(R.id.edtName);
-        edtDescription = findViewById(R.id.edtDescription);
-        edtBrand = findViewById(R.id.edtBrand);
-        edtQuantity = findViewById(R.id.edtQuantity);
-        edtPrice = findViewById(R.id.edtPrice);
+        imageView1 = findViewById(R.id.imageView1);
+        imageView2 = findViewById(R.id.imageView2);
+        imageView3 = findViewById(R.id.imageView3);
 
-        spinnerBottleSize = findViewById(R.id.spinnerBottleSize);
-        spinnerCategory = findViewById(R.id.spinnerCategory);
+        btnChooseImage1 = findViewById(R.id.btnChooseImage1);
+        btnChooseImage2 = findViewById(R.id.btnChooseImage2);
+        btnChooseImage3 = findViewById(R.id.btnChooseImage3);
+        btnAddProduct = findViewById(R.id.btnAddProduct);
 
-        btnSelectImage1 = findViewById(R.id.btnSelectImage1);
-        btnSelectImage2 = findViewById(R.id.btnSelectImage2);
-        btnSelectImage3 = findViewById(R.id.btnSelectImage3);
-        btnUploadProduct = findViewById(R.id.btnUploadProduct);
+        btnChooseImage1.setOnClickListener(v -> openImagePicker(PICK_IMAGE1));
+        btnChooseImage2.setOnClickListener(v -> openImagePicker(PICK_IMAGE2));
+        btnChooseImage3.setOnClickListener(v -> openImagePicker(PICK_IMAGE3));
 
-        ArrayAdapter<String> sizeAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, new String[]{"100ml", "50ml", "30ml", "200ml"});
-        sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerBottleSize.setAdapter(sizeAdapter);
-
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, new String[]{"Homme", "Femme", "Mixte"});
-        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCategory.setAdapter(categoryAdapter);
-
-        btnSelectImage1.setOnClickListener(v -> selectImage(IMAGE_PICK_1));
-        btnSelectImage2.setOnClickListener(v -> selectImage(IMAGE_PICK_2));
-        btnSelectImage3.setOnClickListener(v -> selectImage(IMAGE_PICK_3));
-
-        btnUploadProduct.setOnClickListener(v -> uploadProduct());
+        btnAddProduct.setOnClickListener(v -> validateAndUpload());
     }
 
-    private void selectImage(int code) {
+    private void openImagePicker(int requestCode) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(Intent.createChooser(intent, "Sélectionnez une image"), code);
+        startActivityForResult(intent, requestCode);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null) {
-            Uri selected = data.getData();
-            switch (requestCode) {
-                case IMAGE_PICK_1:
-                    imageUri1 = selected;
+        if(resultCode == RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            if(selectedImageUri == null) return;
+
+            switch(requestCode) {
+                case PICK_IMAGE1:
+                    imageUri1 = selectedImageUri;
+                    imageView1.setImageURI(imageUri1);
                     break;
-                case IMAGE_PICK_2:
-                    imageUri2 = selected;
+                case PICK_IMAGE2:
+                    imageUri2 = selectedImageUri;
+                    imageView2.setImageURI(imageUri2);
                     break;
-                case IMAGE_PICK_3:
-                    imageUri3 = selected;
+                case PICK_IMAGE3:
+                    imageUri3 = selectedImageUri;
+                    imageView3.setImageURI(imageUri3);
                     break;
             }
         }
     }
 
-    private void uploadProduct() {
-        String name = edtName.getText().toString().trim();
-        String description = edtDescription.getText().toString().trim();
-        String brand = edtBrand.getText().toString().trim();
-        String bottleSize = spinnerBottleSize.getSelectedItem().toString();
-        String category = spinnerCategory.getSelectedItem().toString();
+    private void validateAndUpload() {
+        String name = etName.getText().toString().trim();
+        String description = etDescription.getText().toString().trim();
+        String priceStr = etPrice.getText().toString().trim();
+        String brand = etBrand.getText().toString().trim();
+        String bottleSize = etBottleSize.getText().toString().trim();
+        String quantityStr = etQuantity.getText().toString().trim();
+        String category = etCategory.getText().toString().trim();
 
-        if (name.isEmpty() || description.isEmpty() || brand.isEmpty() ||
-                edtQuantity.getText().toString().isEmpty() || edtPrice.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+        if(name.isEmpty() || description.isEmpty() || priceStr.isEmpty() || brand.isEmpty() ||
+                bottleSize.isEmpty() || quantityStr.isEmpty() || category.isEmpty()) {
+            Toast.makeText(this, "Merci de remplir tous les champs", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        int quantity;
+        if(imageUri1 == null || imageUri2 == null || imageUri3 == null) {
+            Toast.makeText(this, "Merci de sélectionner les 3 images", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         double price;
+        int quantity;
+
         try {
-            quantity = Integer.parseInt(edtQuantity.getText().toString());
-            price = Double.parseDouble(edtPrice.getText().toString());
+            price = Double.parseDouble(priceStr);
+            quantity = Integer.parseInt(quantityStr);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Quantité et prix doivent être des nombres valides", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Prix ou quantité invalide", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (imageUri1 == null || imageUri2 == null || imageUri3 == null) {
-            Toast.makeText(this, "Veuillez sélectionner les 3 images", Toast.LENGTH_SHORT).show();
-            return;
+        Product product = new Product();
+        product.setName(name);
+        product.setDescription(description);
+        product.setPrice(price);
+        product.setBrand(brand);
+        product.setBottleSize(bottleSize);
+        product.setQuantity(quantity);
+        product.setCategory(category);
+
+        List<Uri> images = new ArrayList<>();
+        images.add(imageUri1);
+        images.add(imageUri2);
+        images.add(imageUri3);
+
+        uploadImagesAndAddProduct(product, images);
+    }
+
+    private void uploadImagesAndAddProduct(Product product, List<Uri> images) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference().child("products_images");
+
+        List<String> uploadedImageUrls = new ArrayList<>();
+        final int totalImages = images.size();
+
+        for(int i = 0; i < totalImages; i++) {
+            Uri imageUri = images.get(i);
+            String imageName = product.getName() + "_image" + (i + 1) + ".jpg";
+            StorageReference imageRef = storageRef.child(imageName);
+
+            int finalI = i;
+            imageRef.putFile(imageUri)
+                    .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl()
+                            .addOnSuccessListener(uri -> {
+                                uploadedImageUrls.add(uri.toString());
+                                if (uploadedImageUrls.size() == totalImages) {
+                                    product.setImageUrls(uploadedImageUrls);
+                                    addProductToFirestore(product);
+                                }
+                            }))
+                    .addOnFailureListener(e -> {
+                        Log.e("UploadImages", "Erreur upload image " + (finalI + 1), e);
+                        Toast.makeText(AddProductActivity.this, "Erreur upload image " + (finalI + 1), Toast.LENGTH_SHORT).show();
+                    });
         }
-
-        ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setMessage("Création du produit...");
-        dialog.setCancelable(false);
-        dialog.show();
-
-        uploadImage(imageUri1, url1 ->
-                uploadImage(imageUri2, url2 ->
-                        uploadImage(imageUri3, url3 -> {
-                            String id = UUID.randomUUID().toString();
-                            List<String> imageUrls = Arrays.asList(url1, url2, url3);
-
-                            Product product = new Product(id, name, description, imageUrls,
-                                    quantity, brand, bottleSize, price, category);
-
-                            db.collection("products").document(id).set(product)
-                                    .addOnSuccessListener(unused -> {
-                                        dialog.dismiss();
-                                        Toast.makeText(this, "Produit créé avec succès", Toast.LENGTH_LONG).show();
-                                        finish();
-                                    })
-                                    .addOnFailureListener(e -> {
-                                        dialog.dismiss();
-                                        Toast.makeText(this, "Erreur : " + e.getMessage(), Toast.LENGTH_LONG).show();
-                                    });
-                        })
-                )
-        );
     }
 
-    private interface ImageUploadCallback {
-        void onUploaded(String imageUrl);
-    }
-
-    private void uploadImage(Uri uri, ImageUploadCallback callback) {
-        String fileName = UUID.randomUUID().toString();
-        StorageReference ref = storage.getReference().child("product_images/" + fileName);
-        ref.putFile(uri)
-                .continueWithTask(task -> {
-                    if (!task.isSuccessful()) throw task.getException();
-                    return ref.getDownloadUrl();
+    private void addProductToFirestore(Product product) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("products")
+                .add(product)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(AddProductActivity.this, "Produit ajouté avec succès", Toast.LENGTH_SHORT).show();
+                    finish(); // ferme l'activité après ajout
                 })
-                .addOnSuccessListener(uriResult -> callback.onUploaded(uriResult.toString()))
-                .addOnFailureListener(e -> Toast.makeText(this, "Erreur d’upload : " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> {
+                    Log.e("AddProduct", "Erreur ajout produit", e);
+                    Toast.makeText(AddProductActivity.this, "Erreur lors de l'ajout du produit", Toast.LENGTH_SHORT).show();
+                });
     }
 }
